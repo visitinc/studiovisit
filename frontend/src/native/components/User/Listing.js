@@ -12,7 +12,7 @@ import Error from '../UI/Error';
 import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 
-const RecipeListing = ({
+const UserListing = ({
   error,
   loading,
   recipes,
@@ -32,8 +32,8 @@ const RecipeListing = ({
     <Container>
       <Content padder>
         <Header
-          title="Top Recipes"
-          content="This is here to show how you can read and display data from a data source (in our case, Firebase)."
+          title="Users"
+          content="Lorem ipsum"
         />
 
         <FlatList
@@ -68,7 +68,7 @@ const RecipeListing = ({
                     onPress={() => onPress(item)}
                   >
                     <Text>
-                      View Recipe
+                      View Practice
                     </Text>
                   </Button>
                   <Spacer size={5} />
@@ -89,18 +89,18 @@ const RecipeListing = ({
       </Content>
     </Container>
   );
-};
+}
 
-RecipeListing.propTypes = {
+UserListing.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool.isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   reFetch: PropTypes.func,
 };
 
-RecipeListing.defaultProps = {
+UserListing.defaultProps = {
   error: null,
   reFetch: null,
 };
 
-export default RecipeListing;
+export default UserListing;

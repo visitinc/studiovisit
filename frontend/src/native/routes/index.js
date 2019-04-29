@@ -5,9 +5,9 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
-import RecipesContainer from '../../containers/Recipes';
-import RecipeListingComponent from '../components/Recipe/Listing';
-import RecipeSingleComponent from '../components/Recipe/Single';
+import UsersContainer from '../../containers/Users';
+import UserListingComponent from '../components/User/Listing';
+import UserSingleComponent from '../components/User/Single';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/User/SignUp';
@@ -51,7 +51,7 @@ const Index = (
           icon={() => <Icon name="calendar" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="recipes" component={RecipesContainer} Layout={RecipeListingComponent} />
+          <Scene key="recipes" component={UsersContainer} Layout={UserListingComponent} />
         </Stack>
 
         <Stack
@@ -100,11 +100,11 @@ const Index = (
     <Scene
       back
       clone
-      key="recipe"
-      title="RECIPE"
+      key="users"
+      title="PRACTICES"
       {...DefaultProps.navbarProps}
-      component={RecipesContainer}
-      Layout={RecipeSingleComponent}
+      component={UsersContainer}
+      Layout={UserSingleComponent}
     />
   </Stack>
 );

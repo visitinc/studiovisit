@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { getRecipes, getMeals } from '../actions/recipes';
+import { getUsers } from '../actions/users';
 
-class RecipeListing extends Component {
+class UserListing extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
-    recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     match: PropTypes.shape({ params: PropTypes.shape({}) }),
-    fetchRecipes: PropTypes.func.isRequired,
-    fetchMeals: PropTypes.func.isRequired,
+    fetchUsers: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
@@ -24,24 +23,27 @@ class RecipeListing extends Component {
 
   componentDidMount = () => this.fetchData();
 
-  fetchData = (data) => {
-    const { fetchRecipes, fetchMeals } = this.props;
+  fetchData = async (data) => {
+    const { fetchUsers } = this.props;
 
     this.setState({ loading: true });
 
-    return fetchRecipes(data)
-      .then(() => fetchMeals())
-      .then(() => this.setState({
+    try {
+      const users = await fetchUsers();
+      this.setState({
         loading: false,
         error: null,
-      })).catch(err => this.setState({
+      })
+    } catch (err) {
+      this.setState({
         loading: false,
         error: err,
-      }));
+      })
+    }
   }
 
   render = () => {
-    const { Layout, recipes, match } = this.props;
+    const { Layout, users, match } = this.props;
     const { loading, error } = this.state;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
 
@@ -58,12 +60,11 @@ class RecipeListing extends Component {
 }
 
 const mapStateToProps = state => ({
-  recipes: state.recipes.recipes || {},
+  users: state.users.users || {},
 });
 
 const mapDispatchToProps = {
-  fetchMeals: getMeals,
-  fetchRecipes: getRecipes,
+  fetchUsers: getUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeListing);
+export default connect(mapStateToProps, mapDispatchToProps)(UserListing);
