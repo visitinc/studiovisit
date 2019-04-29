@@ -114,7 +114,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'HOST': creds['database']['host'],
+            'HOST': '127.0.0.1',
             'USER': creds['database']['user'],
             'PASSWORD': creds['database']['password'],
             'NAME': creds['database']['name'],

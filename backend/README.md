@@ -12,7 +12,7 @@ pip install -r requirements.txt
 Install + run Cloud SQL Proxy: [link](https://cloud.google.com/sql/docs/mysql/sql-proxy)
 
 ```
-./cloud_sql_proxy -instances=:us-central1:=tcp:3306
+./cloud_sql_proxy -instances=studiovisit-prototype:us-central1:studiovisit-dev=tcp:3306
 ```
 
 
