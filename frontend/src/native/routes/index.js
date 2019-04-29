@@ -42,7 +42,7 @@ const Index = (
           icon={() => <Icon name="contacts" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={UsersContainer} Layout={UserListingComponent} />
+          <Scene key="users" component={UsersContainer} Layout={UserListingComponent} />
         </Stack>
 
         <Stack
@@ -100,7 +100,7 @@ const Index = (
     <Scene
       back
       clone
-      key="users"
+      key="user"
       title="PRACTICES"
       {...DefaultProps.navbarProps}
       component={UsersContainer}

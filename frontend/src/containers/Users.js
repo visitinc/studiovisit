@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
 import { getUsers } from '../actions/users';
 
 class UserListing extends Component {
@@ -46,11 +45,10 @@ class UserListing extends Component {
     const { Layout, users, match } = this.props;
     const { loading, error } = this.state;
     const id = (match && match.params && match.params.id) ? match.params.id : null;
-    console.log(users)
 
     return (
       <Layout
-        recipeId={id}
+        userId={id}
         error={error}
         loading={loading}
         users={users}

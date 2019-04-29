@@ -8,77 +8,52 @@ import { errorMessages } from '../../../constants/messages';
 import Error from '../UI/Error';
 import Spacer from '../UI/Spacer';
 
-const RecipeView = ({
-  error, recipes, recipeId,
+const UserView = ({
+  error, users, userId,
 }) => {
   // Error
   if (error) return <Error content={error} />;
 
-  // Get this Recipe from all recipes
-  let recipe = null;
-  if (recipeId && recipes) {
-    recipe = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
+  let user = null;
+  if (userId && users) {
+    user = users.find(item => parseInt(item.id, 10) === parseInt(userId, 10));
   }
 
   // Recipe not found
-  if (!recipe) return <Error content={errorMessages.recipe404} />;
+  if (!user) return <Error content={errorMessages.user404} />;
 
   // Build Ingredients listing
-  const ingredients = recipe.ingredients.map(item => (
-    <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>
-    </ListItem>
-  ));
-
-  // Build Method listing
-  const method = recipe.method.map(item => (
-    <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>
+  const practices = user.practices.map(item => (
+    <ListItem key={item.name} rightIcon={{ style: { opacity: 0 } }}>
+      <Text>{item.name}</Text>
+      <Spacer size={10} />
+      <Text>{item.location}</Text>
     </ListItem>
   ));
 
   return (
     <Container>
       <Content padder>
-        <Image source={{ uri: recipe.image }} style={{ height: 100, width: null, flex: 1 }} />
+        <Image source={{ uri: user.image }} style={{ height: 100, width: null, flex: 1 }} />
 
         <Spacer size={25} />
-        <H3>{recipe.title}</H3>
-        <Text>
-          by
-          {' '}
-          {recipe.author}
-        </Text>
+        <H3>{user.name}</H3>
         <Spacer size={15} />
 
         <Card>
           <CardItem header bordered>
-            <Text>About this recipe</Text>
-          </CardItem>
-          <CardItem>
-            <Body>
-              <Text>{recipe.body}</Text>
-            </Body>
+            <Text>{user.description}</Text>
           </CardItem>
         </Card>
 
         <Card>
           <CardItem header bordered>
-            <Text>Ingredients</Text>
+            <Text>Practices</Text>
           </CardItem>
           <CardItem>
             <Content>
-              <List>{ingredients}</List>
+              <List>{practices}</List>
             </Content>
-          </CardItem>
-        </Card>
-
-        <Card>
-          <CardItem header bordered>
-            <Text>Method</Text>
-          </CardItem>
-          <CardItem>
-            <List>{method}</List>
           </CardItem>
         </Card>
 
@@ -88,14 +63,14 @@ const RecipeView = ({
   );
 };
 
-RecipeView.propTypes = {
+UserView.propTypes = {
   error: PropTypes.string,
-  recipeId: PropTypes.string.isRequired,
-  recipes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  userId: PropTypes.string.isRequired,
+  users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-RecipeView.defaultProps = {
+UserView.defaultProps = {
   error: null,
 };
 
-export default RecipeView;
+export default UserView;

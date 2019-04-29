@@ -24,7 +24,7 @@ const UserListing = ({
   // Error
   if (error) return <Error content={error} />;
 
-  const keyExtractor = item => item.id;
+  const keyExtractor = item => `${item.id}`;
 
   const onPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
 
@@ -32,7 +32,7 @@ const UserListing = ({
     <Container>
       <Content padder>
         <FlatList
-          numColumns={2}
+          numColumns={1}
           data={users}
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
@@ -56,6 +56,10 @@ const UserListing = ({
                     {item.name}
                   </Text>
                   <Spacer size={15} />
+                  <Text>
+                    {item.description}
+                  </Text>
+                  <Spacer size={15} />
                   <Button
                     block
                     bordered
@@ -66,7 +70,7 @@ const UserListing = ({
                       View Practice
                     </Text>
                   </Button>
-                  <Spacer size={5} />
+                  <Spacer size={8} />
                 </Body>
               </CardItem>
             </Card>
