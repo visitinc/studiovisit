@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'studiovisit/style.css' %}"
+    />
+    <title>{% block title %}{% endblock %} - Studio Visit</title>
+    {% endblock %}
+</head>
+<body>
+<main>
+<h1 class="common-SuperTitle">Studio Visit</h1>
+<div id="content">{% block content %}{% endblock %}</div>
+</main>
+<footer>
+  {% block footer %}
+  &copy; Copyright 2019 by <a href="https://studiovisit.app">Studio Visit</a>.
+  {% endblock %}
+</footer>
+</body>
+</html>
