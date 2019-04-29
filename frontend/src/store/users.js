@@ -18,5 +18,14 @@ export default {
       fields: [],
       subjectMatter: []
     },
+    {
+      id: 2,
+      username: 'nozomi',
+      name: 'nozomi',
+      description: 'working with color and language',
+      practices: [],
+      fields: [],
+      subjectMatter: []
+    },
   ],
 };
