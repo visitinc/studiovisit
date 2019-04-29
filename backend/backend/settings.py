@@ -14,7 +14,7 @@ import os
 import yaml
 
 
-creds = yaml.load(open('./credentials.yml'))
+creds = yaml.load(open('./credentials.yml'), Loader=yaml.FullLoader)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -78,7 +78,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'api.wsgi.application'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 
 # Database
@@ -115,6 +115,7 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'HOST': '127.0.0.1',
+            'PORT': '3306',
             'USER': creds['database']['user'],
             'PASSWORD': creds['database']['password'],
             'NAME': creds['database']['name'],
