@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'studiovisit.urls'
+ROOT_URLCONF = 'backend.urls'
 
 TEMPLATES = [
     {
