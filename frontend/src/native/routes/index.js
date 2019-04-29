@@ -42,7 +42,7 @@ const Index = (
           icon={() => <Icon name="contacts" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={AboutComponent} />
+          <Scene key="home" component={UsersContainer} Layout={UserListingComponent} />
         </Stack>
 
         <Stack

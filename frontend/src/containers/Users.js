@@ -21,7 +21,7 @@ class UserListing extends Component {
     loading: false,
   }
 
-  componentDidMount = () => this.fetchData();
+  // componentDidMount = () => this.fetchData();
 
   fetchData = async (data) => {
     const { fetchUsers } = this.props;
@@ -52,7 +52,7 @@ class UserListing extends Component {
         recipeId={id}
         error={error}
         loading={loading}
-        recipes={recipes}
+        users={users}
         reFetch={() => this.fetchData()}
       />
     );
@@ -60,7 +60,7 @@ class UserListing extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.users.users || {},
+  users: state.users || {},
 });
 
 const mapDispatchToProps = {

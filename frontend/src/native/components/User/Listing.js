@@ -31,11 +31,6 @@ const UserListing = ({
   return (
     <Container>
       <Content padder>
-        <Header
-          title="Users"
-          content="Lorem ipsum"
-        />
-
         <FlatList
           numColumns={2}
           data={recipes}
