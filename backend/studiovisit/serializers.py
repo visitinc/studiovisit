@@ -1,6 +1,5 @@
 from .models import Field
 from rest_framework import serializers
-import stripe
 from django.conf import settings
 
 class FieldSerializer(serializers.HyperlinkedModelSerializer):

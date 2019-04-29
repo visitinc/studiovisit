@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'api.urls'
+ROOT_URLCONF = 'studiovisit.urls'
 
 TEMPLATES = [
     {
@@ -114,11 +114,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'HOST': '127.0.0.1',
-            'PORT': '3306',
-            'NAME': 'postgres',
-            'USER': 'root',
-            'PASSWORD': 'uBaf2eyaenee',
+            'HOST': creds['database']['host'],
+            'USER': creds['database']['user'],
+            'PASSWORD': creds['database']['password'],
+            'NAME': creds['database']['name'],
         }
     }
 # [END db_setup]
