@@ -15,7 +15,7 @@ import Spacer from '../UI/Spacer';
 const UserListing = ({
   error,
   loading,
-  recipes,
+  users,
   reFetch,
 }) => {
   // Loading
@@ -26,14 +26,14 @@ const UserListing = ({
 
   const keyExtractor = item => item.id;
 
-  const onPress = item => Actions.recipe({ match: { params: { id: String(item.id) } } });
+  const onPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
 
   return (
     <Container>
       <Content padder>
         <FlatList
           numColumns={2}
-          data={recipes}
+          data={users}
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
               <CardItem cardBody>
@@ -53,7 +53,7 @@ const UserListing = ({
                 <Body>
                   <Spacer size={10} />
                   <Text style={{ fontWeight: '800' }}>
-                    {item.title}
+                    {item.name}
                   </Text>
                   <Spacer size={15} />
                   <Button
@@ -79,7 +79,6 @@ const UserListing = ({
             />
           )}
         />
-
         <Spacer size={20} />
       </Content>
     </Container>

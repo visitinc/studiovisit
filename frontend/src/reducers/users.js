@@ -1,8 +1,8 @@
 import Store from '../store/users';
 
-export const initialState = Store;
+export const initialState = Store.users;
 
-export default function recipeReducer(state = initialState, action) {
+export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case 'USERS_REPLACE': {
       let users = [];

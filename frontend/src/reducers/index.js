@@ -1,5 +1,4 @@
 import member from './member';
-import recipes from './recipes';
 import users from './users';
 
 const rehydrated = (state = false, action) => {
@@ -14,5 +13,5 @@ const rehydrated = (state = false, action) => {
 export default {
   rehydrated,
   member,
-  recipes,
+  users
 };

@@ -4,6 +4,7 @@ import { Firebase, FirebaseRef } from '../lib/firebase';
   * Get Meals
   */
 export function getMeals() {
+  console.log('get meails')
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   return dispatch => new Promise((resolve, reject) => FirebaseRef.child('meals').once('value')
@@ -17,6 +18,7 @@ export function getMeals() {
   * Get Recipes
   */
 export function getRecipes() {
+  console.log('get meails')
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
   return dispatch => new Promise(resolve => FirebaseRef.child('recipes')
