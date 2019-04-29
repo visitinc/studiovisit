@@ -22,7 +22,7 @@ router = routers.DefaultRouter()
 router.register(r'field', views.FieldViewSet)
 
 urlpatterns = [
-    path('', include('breez.urls')),
+    path('', include('studiovisit.urls')),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls))
