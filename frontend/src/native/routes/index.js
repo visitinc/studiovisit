@@ -42,7 +42,7 @@ const Index = (
       >
         <Stack
           key="home"
-          title={AppConfig.appName.toUpperCase()}
+          title="CONTACTS"
           icon={() => <Icon name="contacts" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
@@ -51,7 +51,7 @@ const Index = (
 
         <Stack
           key="calendar"
-          title="CALENDAR"
+          title="VISITS"
           icon={() => <Icon name="calendar" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
@@ -60,7 +60,7 @@ const Index = (
 
         <Stack
           key="profile"
-          title="PROFILE"
+          title="PRACTICE"
           icon={() => <Icon name="contact" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >

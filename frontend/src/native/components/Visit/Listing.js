@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  FlatList, TouchableOpacity, RefreshControl, Image,
+  FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
 import {
   Container, Content, Card, CardItem, Body, Text, Button,
@@ -32,17 +32,13 @@ const VisitListing = ({
   return (
     <Container>
         <Agenda
-          items={{'2018-05-01': [{ text: 'lorem ipsum' }] }}
-          renderItem={(item, firstItemInDay) => {return (<Card />);}}
-          renderDay={(day, item) => {return (<Card />);}}
+          items={{'2019-04-30': [{ text: 'lorem ipsum'}], '2019-05-01': [{ text: 'lorem ipsum' }, ] }}
+          renderItem={(item, firstItemInDay) => <Card><Text>{item.text}</Text></Card>}
           // specify how empty date content with no items should be rendered
-          renderEmptyDate={() => {return (<Card />);}}
-          // specify how agenda knob should look like
-          renderKnob={() => {return (<Card />);}}
           // specify what should be rendered instead of ActivityIndicator
-          renderEmptyData = {() => {return (<Card />);}}
+          renderEmptyData = {() => {return (<View />);}}
+          rowHasChanged={(r1, r2) => r1.text !== r2.text}
         />
-        <Spacer size={1} />
     </Container>
   );
 }

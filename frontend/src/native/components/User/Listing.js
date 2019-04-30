@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  FlatList, TouchableOpacity, RefreshControl, Image,
+  FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
 import {
   Container, Content, Card, CardItem, Body, Text, Button,
@@ -26,7 +26,8 @@ const UserListing = ({
 
   const keyExtractor = item => `${item.id}`;
 
-  const onPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
+  const onUserPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
+  const onSchedulePress = item => Actions.visits({  });
 
   return (
     <Container>
@@ -36,13 +37,13 @@ const UserListing = ({
           data={users}
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
-              <CardItem header bordered>
-                <Text style={{ fontWeight: '800' }}>
+              <CardItem header bordered onPress={() => onUserPress(item)} button>
+                <Text style={{ fontWeight: '800', textDecorationLine: 'underline' }}>
                   {item.name}
                 </Text>
               </CardItem>
               <CardItem cardBody>
-                <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
+                <TouchableOpacity onPress={() => onUserPress(item)} style={{ flex: 1 }}>
                   <Image
                     source={{ uri: item.image }}
                     style={{
@@ -54,7 +55,7 @@ const UserListing = ({
                   />
                 </TouchableOpacity>
               </CardItem>
-              <CardItem cardBody>
+              <CardItem button cardBody>
                 <Body>
                   <Spacer size={10} />
                   <Spacer size={15} />
@@ -62,27 +63,16 @@ const UserListing = ({
                     {item.description}
                   </Text>
                   <Spacer size={15} />
-                  <Button
-                    block
-                    bordered
-                    small
-                    onPress={() => onPress(item)}
-                  >
-                    <Text>
-                      View Practices
-                    </Text>
-                  </Button>
-                  <Spacer size={8} />
-                  <Button
-                    block
-                    bordered
-                    small
-                    onPress={() => onPress(item)}
-                  >
-                    <Text>
-                      Schedule
-                    </Text>
-                  </Button>
+                  <View style={{ flexDirection: 'row' }}>
+                    <Button
+                      small
+                      onPress={() => onSchedulePress(item)}
+                    >
+                      <Text>
+                        Schedule
+                      </Text>
+                    </Button>
+                  </View>
                   <Spacer size={8} />
                 </Body>
               </CardItem>

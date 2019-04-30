@@ -7,7 +7,8 @@ export default {
       description: 'a puzzle piece practicing at the intersection of pigeons and tech',
       practices: [ { name: 'Computer Lab', location: '260 West Broadway Suite 2', } ],
       fields: [],
-      subjectMatter: []
+      subjectMatter: [],
+      image: 'https://via.placeholder.com/150x60'
     },
     {
       id: 1,
@@ -16,7 +17,8 @@ export default {
       description: 'foobar',
       practices: [],
       fields: [],
-      subjectMatter: []
+      subjectMatter: [],
+      image: 'https://via.placeholder.com/150x60'
     },
     {
       id: 2,
@@ -25,7 +27,8 @@ export default {
       description: 'working with color and language',
       practices: [],
       fields: [],
-      subjectMatter: []
+      subjectMatter: [],
+      image: 'https://via.placeholder.com/150x60'
     },
   ],
 };
