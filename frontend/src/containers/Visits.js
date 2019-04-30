@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUsers } from '../actions/users';
 
-class UserContainer extends Component {
+class VisitContainer extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
-    users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    match: PropTypes.shape({ params: PropTypes.shape({}) }),
-    fetchUsers: PropTypes.func.isRequired,
   }
 
   static defaultProps = {
-    match: null,
   }
 
   state = {
@@ -42,16 +37,13 @@ class UserContainer extends Component {
   }
 
   render = () => {
-    const { Layout, users, match } = this.props;
+    const { Layout } = this.props;
     const { loading, error } = this.state;
-    const id = (match && match.params && match.params.id) ? match.params.id : null;
 
     return (
       <Layout
-        userId={id}
         error={error}
         loading={loading}
-        users={users}
         reFetch={() => this.fetchData()}
       />
     );
@@ -59,11 +51,9 @@ class UserContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.users || {},
 });
 
 const mapDispatchToProps = {
-  fetchUsers: getUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(VisitContainer);

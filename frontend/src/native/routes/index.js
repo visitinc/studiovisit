@@ -5,9 +5,13 @@ import { Icon } from 'native-base';
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
 
-import UsersContainer from '../../containers/Users';
+import UserContainer from '../../containers/Users';
 import UserListingComponent from '../components/User/Listing';
 import UserSingleComponent from '../components/User/Single';
+
+import VisitContainer from '../../containers/Visits';
+import VisitListingComponent from '../components/Visit/Listing';
+import VisitSingleComponent from '../components/Visit/Single';
 
 import SignUpContainer from '../../containers/SignUp';
 import SignUpComponent from '../components/User/SignUp';
@@ -42,7 +46,7 @@ const Index = (
           icon={() => <Icon name="contacts" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="users" component={UsersContainer} Layout={UserListingComponent} />
+          <Scene key="users" component={UserContainer} Layout={UserListingComponent} />
         </Stack>
 
         <Stack
@@ -51,7 +55,7 @@ const Index = (
           icon={() => <Icon name="calendar" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="recipes" component={UsersContainer} Layout={UserListingComponent} />
+          <Scene key="visits" component={VisitContainer} Layout={VisitListingComponent} />
         </Stack>
 
         <Stack
@@ -103,7 +107,7 @@ const Index = (
       key="user"
       title="PRACTICES"
       {...DefaultProps.navbarProps}
-      component={UsersContainer}
+      component={UserContainer}
       Layout={UserSingleComponent}
     />
   </Stack>

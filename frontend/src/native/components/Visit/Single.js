@@ -8,7 +8,7 @@ import { errorMessages } from '../../../constants/messages';
 import Error from '../UI/Error';
 import Spacer from '../UI/Spacer';
 
-const UserView = ({
+const VisitView = ({
   error, users, userId,
 }) => {
   // Error
@@ -73,14 +73,14 @@ const UserView = ({
   );
 };
 
-UserView.propTypes = {
+VisitView.propTypes = {
   error: PropTypes.string,
   userId: PropTypes.string.isRequired,
   users: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
-UserView.defaultProps = {
+VisitView.defaultProps = {
   error: null,
 };
 
-export default UserView;
+export default VisitView;

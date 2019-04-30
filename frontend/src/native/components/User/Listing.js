@@ -36,6 +36,11 @@ const UserListing = ({
           data={users}
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
+              <CardItem header bordered>
+                <Text style={{ fontWeight: '800' }}>
+                  {item.name}
+                </Text>
+              </CardItem>
               <CardItem cardBody>
                 <TouchableOpacity onPress={() => onPress(item)} style={{ flex: 1 }}>
                   <Image
@@ -52,9 +57,6 @@ const UserListing = ({
               <CardItem cardBody>
                 <Body>
                   <Spacer size={10} />
-                  <Text style={{ fontWeight: '800' }}>
-                    {item.name}
-                  </Text>
                   <Spacer size={15} />
                   <Text>
                     {item.description}
@@ -67,7 +69,18 @@ const UserListing = ({
                     onPress={() => onPress(item)}
                   >
                     <Text>
-                      View Practice
+                      View Practices
+                    </Text>
+                  </Button>
+                  <Spacer size={8} />
+                  <Button
+                    block
+                    bordered
+                    small
+                    onPress={() => onPress(item)}
+                  >
+                    <Text>
+                      Schedule
                     </Text>
                   </Button>
                   <Spacer size={8} />
