@@ -32,8 +32,24 @@ const VisitListing = ({
   return (
     <Container>
         <Agenda
-          items={{'2019-04-30': [{ text: 'lorem ipsum'}], '2019-05-01': [{ text: 'lorem ipsum' }, ] }}
-          renderItem={(item, firstItemInDay) => <Card><Text>{item.text}</Text></Card>}
+          items={{'2019-04-30': [{ place: 'Pigeon Pat\'s Loft', date: 'May 1st', time: '11pm', context: '(link)'}] }}
+          renderItem={(item, firstItemInDay) => (
+            <Card>
+              <CardItem>
+                <Text>{item.time}</Text>
+              </CardItem>
+              <CardItem>
+                <Text>{item.place}</Text>
+              </CardItem>
+              <CardItem>
+                <Text>{item.date}</Text>
+              </CardItem>
+              <CardItem>
+                <Text>{item.context}</Text>
+              </CardItem>
+            </Card>
+            )
+          }
           // specify how empty date content with no items should be rendered
           // specify what should be rendered instead of ActivityIndicator
           renderEmptyData = {() => {return (<View />);}}
