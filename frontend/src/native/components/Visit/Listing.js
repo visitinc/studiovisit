@@ -4,8 +4,9 @@ import {
   FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
 import {
-  Container, Content, Card, CardItem, Body, Text, Button,
+  Container, Content, Card, CardItem, Body, Text, Button, Thumbnail, Left
 } from 'native-base';
+import AppConfig from '../../../constants/config';
 import { Actions } from 'react-native-router-flux';
 import Loading from '../UI/Loading';
 import Error from '../UI/Error';
@@ -32,20 +33,15 @@ const VisitListing = ({
   return (
     <Container>
         <Agenda
-          items={{'2019-04-30': [{ place: 'Pigeon Pat\'s Loft', date: 'May 1st', time: '11pm', context: '(link)'}] }}
+          items={{'2019-04-30': [{ place: 'Computer Lab', date: 'May 1st', time: '9pm', context: '(link)'}] }}
           renderItem={(item, firstItemInDay) => (
             <Card>
               <CardItem>
-                <Text>{item.time}</Text>
-              </CardItem>
-              <CardItem>
-                <Text>{item.place}</Text>
-              </CardItem>
-              <CardItem>
-                <Text>{item.date}</Text>
-              </CardItem>
-              <CardItem>
-                <Text>{item.context}</Text>
+                <Left>
+                  <Body>
+                    <Text>{item.time} @ {item.place}</Text>
+                  </Body>
+                </Left>
               </CardItem>
             </Card>
             )
@@ -54,6 +50,7 @@ const VisitListing = ({
           // specify what should be rendered instead of ActivityIndicator
           renderEmptyData = {() => {return (<View />);}}
           rowHasChanged={(r1, r2) => r1.text !== r2.text}
+          theme={{ selectedDayBackgroundColor: AppConfig.appColor,  agendaTodayColor: AppConfig.appColor }}
         />
     </Container>
   );
