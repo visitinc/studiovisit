@@ -4,13 +4,6 @@ from django.db import models
 class User(AbstractUser):
     pass
 
-# Create your models here.
-class Field(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=500)
-    def __str__(self):
-        return self.name
-
 class Institution(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=1000)
@@ -38,5 +31,12 @@ class Discipline(models.Model):
     def __str__(self):
         return self.name
 
-class Influence(models.Model):
-    name = models.CharField(max_length=100)
+class Practice(models.Model):
+    name = models.CharField(max_length=200)
+    members = models.ManyToManyField(User)
+    locations = models.ManyToManyField(Location)
+    discourses = models.ManyToManyField(Discourse)
+    disciplines = models.ManyToManyField(Discipline)
+
+    def __str__(self):
+        return self.name

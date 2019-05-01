@@ -19,7 +19,7 @@ from rest_framework import routers
 from studiovisit import views
 
 router = routers.DefaultRouter()
-router.register(r'field', views.FieldViewSet)
+router.register(r'practice', views.PracticeViewSet)
 
 urlpatterns = [
     path('', include('studiovisit.urls')),
