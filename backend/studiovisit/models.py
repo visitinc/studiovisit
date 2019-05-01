@@ -31,12 +31,24 @@ class Discipline(models.Model):
     def __str__(self):
         return self.name
 
+class Gender(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+class Subject(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.CharField(max_length=1000)
+    genders = models.ManyToManyField(Gender)
+    def __str__(self):
+        return self.name
+
 class Practice(models.Model):
     name = models.CharField(max_length=200)
     members = models.ManyToManyField(User)
     locations = models.ManyToManyField(Location)
     discourses = models.ManyToManyField(Discourse)
     disciplines = models.ManyToManyField(Discipline)
-
+    subjects = models.ManyToManyField(Subject)
     def __str__(self):
         return self.name
