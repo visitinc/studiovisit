@@ -1,4 +1,8 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+class User(AbstractUser):
+    pass
 
 # Create your models here.
 class Field(models.Model):
@@ -33,3 +37,6 @@ class Discipline(models.Model):
     description = models.CharField(max_length=1000)
     def __str__(self):
         return self.name
+
+class Influence(models.Model):
+    name = models.CharField(max_length=100)
