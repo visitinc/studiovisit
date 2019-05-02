@@ -26,6 +26,7 @@
     "web-bundle": "react-scripts build",
     "predeploy": "npm run web-bundle",
     "deploy": "gh-pages -d build",
+    "build:ios": "expo build:ios",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001'"
   },
   "dependencies": {
