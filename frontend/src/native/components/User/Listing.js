@@ -4,13 +4,14 @@ import {
   FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
 import {
-  Container, Content, Card, CardItem, Body, Text, Button,
+  Container, Content, Card, CardItem, Body, Text, Button, List, ListItem
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Loading from '../UI/Loading';
 import Error from '../UI/Error';
 import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
+import Practice from '../Practice';
 
 const UserListing = ({
   error,
@@ -42,40 +43,17 @@ const UserListing = ({
                   {item.name}
                 </Text>
               </CardItem>
-              <CardItem cardBody>
-                <TouchableOpacity onPress={() => onUserPress(item)} style={{ flex: 1 }}>
-                  <Image
-                    source={{ uri: item.image }}
-                    style={{
-                      height: 100,
-                      width: null,
-                      flex: 1,
-                      borderRadius: 5,
-                    }}
-                  />
-                </TouchableOpacity>
-              </CardItem>
-              <CardItem button cardBody>
-                <Body>
-                  <Spacer size={10} />
-                  <Spacer size={15} />
-                  <Text>
-                    {item.description}
-                  </Text>
-                  <Spacer size={15} />
-                  <View style={{ flexDirection: 'row' }}>
-                    <Button
-                      small
-                      onPress={() => onSchedulePress(item)}
-                    >
-                      <Text>
-                        Schedule
-                      </Text>
-                    </Button>
-                  </View>
-                  <Spacer size={8} />
-                </Body>
-              </CardItem>
+              {
+                !item.practices.length
+                  ? <CardItem><Text note>{item.name} has no practices.</Text></CardItem>
+                  : (
+                    <FlatList
+                      data={item.practices}
+                      renderItem={i => <Practice practice={i.item} />}
+                      keyExtractor={keyExtractor}
+                    />
+                  )
+              }
             </Card>
           )}
           keyExtractor={keyExtractor}
