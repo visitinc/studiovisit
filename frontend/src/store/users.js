@@ -70,7 +70,7 @@ export default {
     {
       id: 2,
       username: 'nozomi',
-      name: 'nozomi',
+      name: '@nozomi',
       practices: [],
       image: 'https://via.placeholder.com/150x60'
     },

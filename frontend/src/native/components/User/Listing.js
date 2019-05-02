@@ -28,7 +28,7 @@ const UserListing = ({
   const keyExtractor = item => `${item.id}`;
 
   const onUserPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
-  const onSchedulePress = item => Actions.visits({  });
+  const onSchedulePress = item => Actions.visit({  });
 
   return (
     <Container>

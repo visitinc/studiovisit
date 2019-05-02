@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'react-native';
+import { Image, FlatList } from 'react-native';
 import {
   Container, Content, Card, CardItem, Body, H3, List, ListItem, Text, Button
 } from 'native-base';
 import { errorMessages } from '../../../constants/messages';
 import Error from '../UI/Error';
 import Spacer from '../UI/Spacer';
+import PracticeListing from '../Practice/Listing';
 
 const UserView = ({
   error, users, userId,
 }) => {
   // Error
   if (error) return <Error content={error} />;
+  const keyExtractor = item => `${item.id}`;
 
   let user = null;
   if (userId && users) {
@@ -21,25 +23,6 @@ const UserView = ({
 
   // Recipe not found
   if (!user) return <Error content={errorMessages.user404} />;
-
-  // Build Ingredients listing
-  const practices = user.practices.map(item => (
-    <ListItem key={item.name} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item.name}</Text>
-      <Spacer size={10} />
-      <Text>{item.location}</Text>
-      <Button
-        block
-        bordered
-        small
-        onPress={() => onPress(item)}
-      >
-        <Text>
-          Schedule
-        </Text>
-      </Button>
-    </ListItem>
-  ));
 
   return (
     <Container>
@@ -62,7 +45,17 @@ const UserView = ({
           </CardItem>
           <CardItem>
             <Content>
-              <List>{practices}</List>
+              {
+                !user.practices.length
+                  ? <CardItem><Text note>{user.name} has no practices.</Text></CardItem>
+                  : (
+                    <FlatList
+                      data={user.practices}
+                      renderItem={i => <PracticeListing practice={i.item} />}
+                      keyExtractor={keyExtractor}
+                    />
+                  )
+              }
             </Content>
           </CardItem>
         </Card>

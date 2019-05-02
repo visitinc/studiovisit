@@ -19,7 +19,6 @@ const VisitView = ({
     user = users.find(item => parseInt(item.id, 10) === parseInt(userId, 10));
   }
 
-  // Recipe not found
   if (!user) return <Error content={errorMessages.user404} />;
 
   // Build Ingredients listing
@@ -44,30 +43,6 @@ const VisitView = ({
   return (
     <Container>
       <Content padder>
-        <Image source={{ uri: user.image }} style={{ height: 100, width: null, flex: 1 }} />
-
-        <Spacer size={25} />
-        <H3>{user.name}</H3>
-        <Spacer size={15} />
-
-        <Card>
-          <CardItem header bordered>
-            <Text>{user.description}</Text>
-          </CardItem>
-        </Card>
-
-        <Card>
-          <CardItem header bordered>
-            <Text>Practices</Text>
-          </CardItem>
-          <CardItem>
-            <Content>
-              <List>{practices}</List>
-            </Content>
-          </CardItem>
-        </Card>
-
-        <Spacer size={20} />
       </Content>
     </Container>
   );

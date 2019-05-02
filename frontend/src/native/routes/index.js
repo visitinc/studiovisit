@@ -56,6 +56,7 @@ const Index = (
           {...DefaultProps.navbarProps}
         >
           <Scene key="visits" component={VisitContainer} Layout={VisitListingComponent} />
+          <Scene title="SCHEDULE" key="visit" component={VisitContainer} Layout={VisitSingleComponent} />
         </Stack>
 
         <Stack
