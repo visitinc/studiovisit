@@ -17,7 +17,7 @@ const Practice = ({ practice, practice: { name, present, members = [] }}) => (
               fontSize: 15,
               color: Colors.brandSuccess,
               top: 3,
-              right: 2
+              right: 2.5
             }}
           />
         )
