@@ -4,14 +4,14 @@ import {
   FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
 import {
-  Container, Content, Card, CardItem, Body, Text, Button, List, ListItem
+  Container, Content, Card, CardItem, Body, Text, Button, List, ListItem, Badge, Left, Right, H3
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Loading from '../UI/Loading';
 import Error from '../UI/Error';
 import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
-import Practice from '../Practice';
+import PracticeListing from '../Practice/Listing';
 
 const UserListing = ({
   error,
@@ -37,11 +37,20 @@ const UserListing = ({
           numColumns={1}
           data={users}
           renderItem={({ item }) => (
-            <Card transparent style={{ paddingHorizontal: 6 }}>
-              <CardItem header bordered onPress={() => onUserPress(item)} button>
-                <Text style={{ fontWeight: '800', textDecorationLine: 'underline' }}>
-                  {item.name}
-                </Text>
+            <Card transparent>
+              <CardItem header bordered>
+                <Left>
+                  <Button small dark onPress={() => onUserPress(item)} transparent>
+                    <Text style={{ fontSize: 18, fontWeight: '800' }} >
+                      {item.name}
+                    </Text>
+                  </Button>
+                </Left>
+                <Right>
+                  <Button onPress={onSchedulePress} small dark bordered>
+                    <Text>Visit?</Text>
+                  </Button>
+                </Right>
               </CardItem>
               {
                 !item.practices.length
@@ -49,7 +58,7 @@ const UserListing = ({
                   : (
                     <FlatList
                       data={item.practices}
-                      renderItem={i => <Practice practice={i.item} />}
+                      renderItem={i => <PracticeListing practice={i.item} />}
                       keyExtractor={keyExtractor}
                     />
                   )
