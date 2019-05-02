@@ -23,6 +23,7 @@ export default {
           present: true,
           description: 'Studio Visit is a protocol for practice',
           disciplines: ['Software', 'Relational Aesthetics'],
+          subjects: ['Pigeons', 'Healthcare', 'Social Media'],
           members: ['P', 'V'],
           images: ['https://via.placeholder.com/150x60']
         },
@@ -51,6 +52,7 @@ export default {
           present: true,
           description: 'Studio Visit is a protocol for practice',
           disciplines: ['Software', 'Relational Aesthetics'],
+          subjects: ['Pigeons', 'Healthcare', 'Social Media'],
           members: ['P', 'V'],
           images: ['https://via.placeholder.com/150x60']
         },
@@ -58,7 +60,9 @@ export default {
           id: 3,
           name: 'Campbell Carolan',
           description: '???',
-          members: ['V', 'C']
+          members: ['V', 'C'],
+          disciplines: ['Software', 'Relational Aesthetics'],
+          subjects: ['Pigeons', 'Healthcare', 'Social Media'],
         }
       ],
       image: 'https://via.placeholder.com/150x60'

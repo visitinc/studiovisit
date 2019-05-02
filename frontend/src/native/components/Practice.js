@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import { ListItem, Text, Icon, Left, Right, Thumbnail, Body } from 'native-base';
 import Colors from '../../../native-base-theme/variables/commonColor';
+import { formatPracticeMetadata } from '../../lib'
 
-const Practice = ({ practice: { name, present }}) => (
+const Practice = ({ practice, practice: { name, present }}) => (
   <ListItem noIndent icon>
     <Left>
       <Thumbnail square small source={{ uri: 'https://via.placeholder.com/40' }} />
@@ -23,7 +24,7 @@ const Practice = ({ practice: { name, present }}) => (
     </Left>
     <Body>
       <Text>{name}</Text>
-      <Text note>Going m wn way</Text>
+      <Text note>{formatPracticeMetadata(practice)}</Text>
     </Body>
     <Right>
       <Text>Visit </Text>
