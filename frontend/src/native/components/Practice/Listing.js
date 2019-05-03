@@ -4,10 +4,10 @@ import { ListItem, Text, Icon, Left, Right, Thumbnail, Body, Badge } from 'nativ
 import Colors from '../../../../native-base-theme/variables/commonColor';
 import { formatPracticeMetadata } from '../../../lib'
 
-const Practice = ({ practice, practice: { name, present, members = [] }}) => (
+const Practice = ({ practice, practice: { name, present, members = [], images = [] }}) => (
   <ListItem noIndent icon>
     <Left>
-      <Thumbnail square small source={{ uri: 'https://via.placeholder.com/40' }} />
+      <Thumbnail square small source={{ uri: images[0] ? images[0] : 'https://via.placeholder.com/40' }} />
       {
         present && (
           <Icon

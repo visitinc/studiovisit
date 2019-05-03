@@ -74,5 +74,26 @@ export default {
       practices: [],
       image: 'https://via.placeholder.com/150x60'
     },
+    {
+      id: 3,
+      username: 'alexialario',
+      name: 'Alexi Alario',
+      practices: [
+        {
+          id: 0,
+          name: 'Criticism',
+          location: '200 Willoughby',
+          present: false,
+          description: '',
+          disciplines: ['Criticism', 'Drawing'],
+          discourses: ['Competitive Aesthetics'],
+          subjects: ['Bunnies', 'Eating Disorders', 'Disordered Eating', 'KPOP'],
+          institutions: ['Pratt Institute Critical and Visual Studies'],
+          members: [],
+          images: ['https://sc02.alicdn.com/kf/HTB16WxySVXXXXb0XpXXq6xXFXXXB/denim-fabric-stock-lot-stock-denim-fabric.jpg_50x50.jpg']
+        },
+      ],
+      image: 'https://sc02.alicdn.com/kf/HTB16WxySVXXXXb0XpXXq6xXFXXXB/denim-fabric-stock-lot-stock-denim-fabric.jpg_50x50.jpg'
+    },
   ],
 };
