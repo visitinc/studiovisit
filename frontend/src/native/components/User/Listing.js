@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
   FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
@@ -12,12 +13,14 @@ import Error from '../UI/Error';
 import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 import PracticeListing from '../Practice/Listing';
+import { setVisitDraftTargetUserId } from '../../../actions/visitDraft';
 
 const UserListing = ({
   error,
   loading,
   users,
   reFetch,
+  setVisitDraftTargetUserId
 }) => {
   // Loading
   if (loading) return <Loading />;
@@ -28,7 +31,10 @@ const UserListing = ({
   const keyExtractor = item => `${item.id}`;
 
   const onUserPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
-  const onSchedulePress = item => Actions.visit({  });
+  const onSchedulePress = userId => {
+    setVisitDraftTargetUserId(userId)
+    Actions.visit({ });
+  }
 
   return (
     <Container>
@@ -47,7 +53,7 @@ const UserListing = ({
                   </Button>
                 </Left>
                 <Right>
-                  <Button onPress={onSchedulePress} small dark bordered>
+                  <Button onPress={() => onSchedulePress(item.id)} small dark bordered>
                     <Text>Visit?</Text>
                   </Button>
                 </Right>
@@ -91,4 +97,11 @@ UserListing.defaultProps = {
   reFetch: null,
 };
 
-export default UserListing;
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = {
+  setVisitDraftTargetUserId,
+}
+export default connect(mapStateToProps, mapDispatchToProps)(UserListing);
