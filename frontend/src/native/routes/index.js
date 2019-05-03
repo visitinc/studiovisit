@@ -108,7 +108,7 @@ const Index = (
       back
       clone
       key="user"
-      title="PRACTICES"
+      title="PERSON"
       {...DefaultProps.navbarProps}
       component={UserContainer}
       Layout={UserSingleComponent}

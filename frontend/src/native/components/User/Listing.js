@@ -47,7 +47,7 @@ const UserListing = ({
               <CardItem header bordered>
                 <Left>
                   <Button small dark onPress={() => onUserPress(item)} transparent>
-                    <Text style={{ fontSize: 18, fontWeight: '800' }} >
+                    <Text style={{ fontSize: 16, fontWeight: '600' }} >
                       {item.name}
                     </Text>
                   </Button>

@@ -25,7 +25,7 @@ const Practice = ({ practice, practice: { name, present, members = [] }}) => (
     </Left>
     <Body>
       <View style={{ flexDirection: 'row' }}>
-        <Text style={{ marginRight: 5 }}>{name}</Text>
+        <Text style={{ marginRight: 5 }} >{name}</Text>
         {
           members.length > 1 && (
             <Fragment>
@@ -35,7 +35,7 @@ const Practice = ({ practice, practice: { name, present, members = [] }}) => (
           )
         }
       </View>
-      <Text note>{formatPracticeMetadata(practice)}</Text>
+      <Text numberOfLines={1} ellipsizeMode="tail" note>{formatPracticeMetadata(practice)}</Text>
     </Body>
     <Right>
       <Icon name="arrow-forward" />
