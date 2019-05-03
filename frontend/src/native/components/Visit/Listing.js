@@ -4,8 +4,9 @@ import {
   FlatList, TouchableOpacity, RefreshControl, Image, View
 } from 'react-native';
 import {
-  Container, Content, Card, CardItem, Body, Text, Button, Thumbnail, Left
+  Container, Content, Card, CardItem, Body, Text, Button, Thumbnail, Left, List, Right
 } from 'native-base';
+import { MapView } from 'expo';
 import AppConfig from '../../../constants/config';
 import { Actions } from 'react-native-router-flux';
 import Loading from '../UI/Loading';
@@ -13,6 +14,9 @@ import Error from '../UI/Error';
 import Header from '../UI/Header';
 import Spacer from '../UI/Spacer';
 import { Agenda } from 'react-native-calendars';
+import PracticeListing from '../Practice/Listing';
+import userStore from '../../../store/users';
+
 
 const VisitListing = ({
   error,
@@ -30,18 +34,42 @@ const VisitListing = ({
 
   const onPress = item => Actions.user({ match: { params: { id: String(item.id) } } });
 
+  const computerLabPractice = userStore.users[0].practices[1]
   return (
     <Container>
         <Agenda
-          items={{'2019-04-30': [{ place: 'Computer Lab', date: 'May 1st', time: '9pm', context: '(link)'}] }}
+          items={{
+            '2019-05-02': [{ place: 'Computer Lab', date: 'May 1st', time: '9am', context: '(link)'}],
+            '2019-05-03': [{ place: 'Computer Lab', date: 'May 1st', time: '9am - 9pm', context: '(link)'}],
+            '2019-05-04': [{ place: 'Computer Lab', date: 'May 1st', time: '9am - 9pm', context: '(link)'}],
+          }}
           renderItem={(item, firstItemInDay) => (
             <Card>
-              <CardItem>
+              <FlatList
+                data={[computerLabPractice]}
+                renderItem={i => <PracticeListing practice={i.item} />}
+                keyExtractor={keyExtractor}
+              />
+              <MapView
+                style={{ height: 100 }}
+                initialRegion={{
+                  latitude: 40.720522,
+                  longitude: -74.005695,
+                  latitudeDelta: 0.0222,
+                  longitudeDelta: 0.0121,
+                }}
+              >
+                <MapView.Marker title="foo" description="foo" coordinate={{ latitude: 40.720522, longitude: -74.005695 }} />
+              </MapView>
+              <CardItem footer>
                 <Left>
-                  <Body>
-                    <Text>{item.time} @ {item.place}</Text>
-                  </Body>
+                  <Text>{item.time}</Text>
                 </Left>
+                <Right>
+                  <Button onPress={() => onSchedulePress(item.id)} small dark bordered>
+                    <Text>Flake?</Text>
+                  </Button>
+                </Right>
               </CardItem>
             </Card>
             )

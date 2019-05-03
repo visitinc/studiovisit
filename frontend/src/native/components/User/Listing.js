@@ -38,7 +38,7 @@ const UserListing = ({
 
   return (
     <Container>
-      <Content padder>
+      <Content>
         <FlatList
           numColumns={1}
           data={users}
