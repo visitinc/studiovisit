@@ -1,6 +1,7 @@
 import React from 'react';
 import { Scene, Tabs, Stack } from 'react-native-router-flux';
-import { Icon } from 'native-base';
+import { View } from 'react-native';
+import { Icon, Text } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
 import AppConfig from '../../constants/config';
@@ -43,7 +44,8 @@ const Index = (
         <Stack
           key="home"
           title="CONTACTS"
-          icon={() => <Icon name="contacts" {...DefaultProps.icons} />}
+          icon={() => <Text style={{ fontFamily: 'Cairo', color: 'white', fontSize: 42 }}>{'"'}</Text>}
+          tabBarLabel="Contacts"
           {...DefaultProps.navbarProps}
         >
           <Scene key="users" component={UserContainer} Layout={UserListingComponent} />
@@ -52,7 +54,7 @@ const Index = (
         <Stack
           key="calendar"
           title="VISITS"
-          icon={() => <Icon name="calendar" {...DefaultProps.icons} />}
+          icon={() => <Text style={{ fontFamily: 'Cairo', color: 'white', fontSize: 42 }}>{'<'}</Text>}
           {...DefaultProps.navbarProps}
         >
           <Scene key="visits" component={VisitContainer} Layout={VisitListingComponent} />
@@ -62,7 +64,7 @@ const Index = (
         <Stack
           key="profile"
           title="PRACTICE"
-          icon={() => <Icon name="contact" {...DefaultProps.icons} />}
+          icon={() => <Text style={{ fontFamily: 'Cairo', color: 'white', fontSize: 42 }}>{'o'}</Text>}
           {...DefaultProps.navbarProps}
         >
           <Scene key="profileHome" component={MemberContainer} Layout={ProfileComponent} />

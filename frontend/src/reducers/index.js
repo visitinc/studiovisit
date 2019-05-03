@@ -1,5 +1,6 @@
 import member from './member';
 import users from './users';
+import visitDraft from './visitDraft';
 
 const rehydrated = (state = false, action) => {
   switch (action.type) {
@@ -13,5 +14,6 @@ const rehydrated = (state = false, action) => {
 export default {
   rehydrated,
   member,
-  users
+  users,
+  visitDraft
 };
