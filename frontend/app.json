@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Studio Visit",
-    "description": "",
+    "description": "Studio Visit is a protocol for practice.",
     "slug": "studio-visit",
     "privacy": "public",
     "sdkVersion": "32.0.0",
@@ -15,7 +15,7 @@
     "splash": {
       "image": "./src/images/launch.png",
       "resizeMode": "contain",
-      "backgroundColor": "#eeeeee"
+      "backgroundColor": "#000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
