@@ -1,9 +1,7 @@
 import { errorMessages } from '../constants/messages';
 import { Firebase, FirebaseRef } from '../lib/firebase';
+import { OAUTH_ROOT, CLIENT_ID, CLIENT_SECRET } from '../constants/config'
 
-/**
-  * Sign Up to Firebase
-  */
 export function signUp(formData) {
   const {
     email, password, password2, firstName, lastName,
@@ -73,7 +71,6 @@ export function getMemberData() {
 }
 
 /**
-  * Login to Firebase with Email/Password
   */
 export function login(formData) {
   const { email, password } = formData;
@@ -83,31 +80,29 @@ export function login(formData) {
     if (!email) return reject({ message: errorMessages.missingEmail });
     if (!password) return reject({ message: errorMessages.missingPassword });
 
-    // Go to Firebase
-    return Firebase.auth().setPersistence(Firebase.auth.Auth.Persistence.LOCAL)
-      .then(() => Firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(async (res) => {
-          const userDetails = res && res.user ? res.user : null;
+    try {
+      const res = await fetch(`${OAUTH_ROOT}/token/`, {
+        method: 'POST',
+        body: `grant_type=password&username=${email}&password=${password}`,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accepts': 'application/json',
+          'Authorization': `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`
+        }
+      })
 
-          if (userDetails.uid) {
-            // Update last logged in data
-            FirebaseRef.child(`users/${userDetails.uid}`).update({
-              lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
-            });
+      const json = await res.json()
 
-            // Send verification Email when email hasn't been verified
-            if (userDetails.emailVerified === false) {
-              Firebase.auth().currentUser.sendEmailVerification()
-                .catch(() => console.log('Verification email failed to send'));
-            }
-
-            // Get User Data from DB (different to auth user data)
-            getUserData(dispatch);
-          }
-
-          return resolve(dispatch({ type: 'USER_LOGIN', data: userDetails }));
-        }).catch(reject));
-  }).catch((err) => { throw err.message; });
+      if (json && json.access_token) {
+        resolve(dispatch({ type: 'USER_LOGIN', data: { username: email, ...json }}))
+      } else {
+        reject()
+      }
+    } catch (err) {
+      console.log(err)
+      reject()
+    }
+  })
 }
 
 /**

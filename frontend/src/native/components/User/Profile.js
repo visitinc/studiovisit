@@ -2,42 +2,50 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import {
-  Container, Content, List, ListItem, Body, Left, Text, Icon,
+  Container, Content, List, ListItem, Body, Left, Text, Icon, Right, Spacer
 } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Header from '../UI/Header';
+import CairoIcon from '../../../lib/CairoIcon';
+import { APP_COLOR } from '../../../constants/config';
 
 const Profile = ({ member, logout }) => (
   <Container>
     <Content>
       <List>
-        {(member && member.email)
+        {(member && member.username)
           ? (
             <View>
               <Content padder>
                 <Header
-                  title={`Hi ${member.firstName},`}
-                  content={`You are currently logged in as ${member.email}`}
+                  title={`Hi ${member.username},`}
+                  content={"Today's art world weather is: Heavy Criticism "}
                 />
               </Content>
+              <Content>
+                <Left />
+                  <CairoIcon name="evil-eye" style={{ color: APP_COLOR, fontSize: 42, alignSelf: 'center'}} />
+                <Right />
+              </Content>
+              <Spacer size={10} />
 
               <ListItem onPress={Actions.updateProfile} icon>
                 <Left>
-                  <Icon name="person-add" />
+                  <CairoIcon name="pencil" style={{ color: 'black', fontSize: 42 }} />
                 </Left>
                 <Body>
                   <Text>
-                    Update My Profile
+                    Update My Practices
                   </Text>
                 </Body>
               </ListItem>
               <ListItem onPress={logout} icon>
                 <Left>
-                  <Icon name="power" />
+                  <CairoIcon name="wine" style={{ color: 'black', fontSize: 42 }} />
                 </Left>
                 <Body>
                   <Text>
-                    Logout
+                    Sign Out
                   </Text>
                 </Body>
               </ListItem>
@@ -47,24 +55,24 @@ const Profile = ({ member, logout }) => (
             <View>
               <Content padder>
                 <Header
-                  title="Hi there,"
-                  content="Please login to gain extra access"
+                  title="Studio Visit"
+                  content="Create an account to document your work and organize your practice."
                 />
               </Content>
 
               <ListItem onPress={Actions.login} icon>
                 <Left>
-                  <Icon name="power" />
+                  <CairoIcon name="key" style={{ color: 'black', fontSize: 42 }} />
                 </Left>
                 <Body>
                   <Text>
-                    Login
+                    Sign In
                   </Text>
                 </Body>
               </ListItem>
               <ListItem onPress={Actions.signUp} icon>
                 <Left>
-                  <Icon name="add-circle" />
+                  <CairoIcon name="match" style={{ color: 'black', fontSize: 42 }} />
                 </Left>
                 <Body>
                   <Text>
@@ -74,12 +82,20 @@ const Profile = ({ member, logout }) => (
               </ListItem>
               <ListItem onPress={Actions.forgotPassword} icon>
                 <Left>
-                  <Icon name="help-buoy" />
+                  <CairoIcon name="bandaid" style={{ color: 'black', fontSize: 42 }} />
                 </Left>
                 <Body>
                   <Text>
                     Forgot Password
                   </Text>
+                </Body>
+              </ListItem>
+              <ListItem onPress={Actions.forgotPassword} icon>
+                <Left>
+                  <CairoIcon name="dynamite" style={{ color: 'black', fontSize: 42 }} />
+                </Left>
+                <Body>
+                  <Text>Delete Account</Text>
                 </Body>
               </ListItem>
             </View>

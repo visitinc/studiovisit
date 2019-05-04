@@ -66,14 +66,14 @@ class Login extends React.Component {
         <Row>
           <Col lg={{ size: 6, offset: 3 }}>
             <Card>
-              <CardHeader>Login</CardHeader>
+              <CardHeader>Sign In</CardHeader>
               <CardBody>
                 {!!success && <Alert color="success">{success}</Alert>}
                 {!!error && <Alert color="danger">{error}</Alert>}
 
                 <Form onSubmit={this.handleSubmit}>
                   <FormGroup>
-                    <Label for="email">Email</Label>
+                    <Label for="email">Username / Email</Label>
                     <Input
                       type="email"
                       name="email"

@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { Icon, Text } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
-import AppConfig from '../../constants/config';
 
 import UserContainer from '../../containers/Users';
 import UserListingComponent from '../components/User/Listing';
@@ -63,7 +62,7 @@ const Index = (
 
         <Stack
           key="profile"
-          title="PRACTICE"
+          title="ME"
           icon={() => <Text style={{ fontFamily: 'Cairo', color: 'white', fontSize: 42 }}>{'o'}</Text>}
           {...DefaultProps.navbarProps}
         >
@@ -103,7 +102,6 @@ const Index = (
         </Stack>
       </Tabs>
     </Scene>
-
     <Scene
       back
       clone

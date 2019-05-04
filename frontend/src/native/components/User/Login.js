@@ -56,15 +56,15 @@ class Login extends React.Component {
           <View padder>
             <Header
               title="Welcome back"
-              content="Please use your email and password to login."
+              content="Sign in to access your account."
             />
             {error && <Messages message={error} />}
             {success && <Messages type="success" message={success} />}
           </View>
 
           <Form>
-            <Item stackedLabel>
-              <Label>Email</Label>
+            <Item floatingLabel>
+              <Label>Email or Username</Label>
               <Input
                 autoCapitalize="none"
                 value={email}
@@ -73,7 +73,7 @@ class Login extends React.Component {
                 onChangeText={v => this.handleChange('email', v)}
               />
             </Item>
-            <Item stackedLabel>
+            <Item floatingLabel>
               <Label>Password</Label>
               <Input
                 secureTextEntry

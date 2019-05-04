@@ -2,11 +2,22 @@ export default function userReducer(state = {}, action) {
   switch (action.type) {
     case 'USER_LOGIN': {
       if (action.data) {
+        const {
+          access_token: accessToken,
+          expires_in: expiresIn,
+          refresh_token: refreshToken,
+          scope,
+          token_type: tokenType,
+          username
+        } = action.data;
         return {
           ...state,
-          uid: action.data.uid,
-          email: action.data.email,
-          emailVerified: action.data.emailVerified,
+          accessToken,
+          expiresIn,
+          refreshToken,
+          scope,
+          tokenType,
+          username
         };
       }
       return {};

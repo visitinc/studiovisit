@@ -7,7 +7,7 @@ import {
   Container, Content, Card, CardItem, Body, Text, Button, Thumbnail, Left, List, Right
 } from 'native-base';
 import { MapView } from 'expo';
-import AppConfig from '../../../constants/config';
+import { APP_COLOR } from '../../../constants/config';
 import { Actions } from 'react-native-router-flux';
 import Loading from '../UI/Loading';
 import Error from '../UI/Error';
@@ -78,7 +78,7 @@ const VisitListing = ({
           // specify what should be rendered instead of ActivityIndicator
           renderEmptyData = {() => {return (<View />);}}
           rowHasChanged={(r1, r2) => r1.text !== r2.text}
-          theme={{ selectedDayBackgroundColor: AppConfig.appColor,  agendaTodayColor: AppConfig.appColor }}
+          theme={{ selectedDayBackgroundColor: APP_COLOR,  agendaTodayColor: APP_COLOR }}
         />
     </Container>
   );
