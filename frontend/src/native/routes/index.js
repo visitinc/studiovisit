@@ -48,6 +48,15 @@ const Index = (
           {...DefaultProps.navbarProps}
         >
           <Scene key="users" component={UserContainer} Layout={UserListingComponent} />
+          <Scene
+            back
+            clone
+            key="user"
+            title="PERSON"
+            {...DefaultProps.navbarProps}
+            component={UserContainer}
+            Layout={UserSingleComponent}
+          />
         </Stack>
 
         <Stack
@@ -102,15 +111,6 @@ const Index = (
         </Stack>
       </Tabs>
     </Scene>
-    <Scene
-      back
-      clone
-      key="user"
-      title="PERSON"
-      {...DefaultProps.navbarProps}
-      component={UserContainer}
-      Layout={UserSingleComponent}
-    />
   </Stack>
 );
 

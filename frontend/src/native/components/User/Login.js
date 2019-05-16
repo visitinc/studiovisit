@@ -61,7 +61,6 @@ class Login extends React.Component {
             {error && <Messages message={error} />}
             {success && <Messages type="success" message={success} />}
           </View>
-
           <Form>
             <Item floatingLabel>
               <Label>Email or Username</Label>
@@ -81,9 +80,7 @@ class Login extends React.Component {
                 onChangeText={v => this.handleChange('password', v)}
               />
             </Item>
-
             <Spacer size={20} />
-
             <View padder>
               <Button block onPress={this.handleSubmit} disabled={loading}>
                 <Text>{loading ? 'Loading' : 'Login' }</Text>

@@ -14,7 +14,7 @@ export default {
           disciplines: ['Software', 'Research', 'Critique'],
           subjects: ['Pigeons', 'Healthcare', 'Social Media'],
           members: ['P', 'Z', 'Z'],
-          images: ['https://via.placeholder.com/150x60']
+          images: ['https://pbs.twimg.com/profile_images/664304258125275136/vpckLRqD_400x400.png']
         },
         {
           id: 1,
@@ -25,7 +25,7 @@ export default {
           disciplines: ['Software', 'Relational Aesthetics'],
           subjects: ['Pigeons', 'Healthcare', 'Social Media'],
           members: ['P', 'V'],
-          images: ['https://via.placeholder.com/150x60']
+          images: ['https://pbs.twimg.com/profile_images/1104269610201825281/fbVC32wG_400x400.png']
         },
         {
           id: 2,
@@ -35,6 +35,7 @@ export default {
           description: 'Computer Lab is a software consultancy and research group in New York City',
           disciplines: ['Drawing'],
           subjects: ['Pigeons', 'Three Body Problem'],
+          images: ['https://ptsteadman.com/images/pts_pigeon.jpg'],
           members: ['P']
         }
       ],
@@ -54,7 +55,7 @@ export default {
           disciplines: ['Software', 'Relational Aesthetics'],
           subjects: ['Pigeons', 'Healthcare', 'Social Media'],
           members: ['P', 'V'],
-          images: ['https://via.placeholder.com/150x60']
+          images: ['https://pbs.twimg.com/profile_images/1104269610201825281/fbVC32wG_400x400.png']
         },
         {
           id: 3,
@@ -81,7 +82,7 @@ export default {
       practices: [
         {
           id: 0,
-          name: 'Criticism',
+          name: 'Cutest LEGAL teen art critic',
           location: '200 Willoughby',
           present: false,
           description: '',
@@ -91,6 +92,27 @@ export default {
           institutions: ['Pratt Institute Critical and Visual Studies'],
           members: [],
           images: ['https://sc02.alicdn.com/kf/HTB16WxySVXXXXb0XpXXq6xXFXXXB/denim-fabric-stock-lot-stock-denim-fabric.jpg_50x50.jpg']
+        },
+      ],
+      image: 'https://sc02.alicdn.com/kf/HTB16WxySVXXXXb0XpXXq6xXFXXXB/denim-fabric-stock-lot-stock-denim-fabric.jpg_50x50.jpg'
+    },
+    {
+      id: 4,
+      username: 'adcatucci',
+      name: 'adcatucci',
+      practices: [
+        {
+          id: 7,
+          name: 'Stone Carving',
+          location: 'Italy',
+          present: false,
+          description: '',
+          disciplines: ['Sculpture'],
+          discourses: ['Atelier Life'],
+          subjects: ['Animal Image'],
+          institutions: [],
+          members: [],
+          images: ['https://herschel.com/content/dam/herschel/swatches/00165.png']
         },
       ],
       image: 'https://sc02.alicdn.com/kf/HTB16WxySVXXXXb0XpXXq6xXFXXXB/denim-fabric-stock-lot-stock-denim-fabric.jpg_50x50.jpg'

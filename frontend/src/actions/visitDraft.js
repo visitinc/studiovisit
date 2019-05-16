@@ -10,4 +10,9 @@ export const setVisitDraftTargetUserId = targetUserId => ({
   targetUserId,
 })
 
+export const setFavTime = selected => ({
+    type: 'SET_FAV_TIME',
+    selected
+})
+
 

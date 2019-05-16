@@ -10,6 +10,12 @@ export default function visitDraftReducer(state = initialState, action) {
         targetUserId: action.targetUserId,
       };
     }
+    case 'SET_FAV_TIME': {
+      return {
+        ...state,
+        favTime: action.selected,
+      };
+    }
     default:
       return state;
   }

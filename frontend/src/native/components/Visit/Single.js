@@ -23,25 +23,32 @@ import {
   Header,
   Left,
   Right,
-  DatePicker
+  DatePicker,
+  Label,
+  Radio,
+  Switch
 } from 'native-base';
+import { View, DatePickerIOS } from 'react-native';
 import { errorMessages } from '../../../constants/messages';
 import { getUsers } from '../../../selectors';
+import { setFavTime } from '../../../actions/visitDraft';
 import Error from '../UI/Error';
 import Spacer from '../UI/Spacer';
 import Emoji from 'react-native-emoji';
 
 const VisitView = ({
-  error, visitDraft, visitDraft: { targetUserId }, users
+  error, visitDraft, visitDraft: { targetUserId }, users, setFavTime
 }) => {
   if (error) return <Error content={error} />;
   const targetUser = users.find(u => u.id === targetUserId);
+  console.log(visitDraft.favTime)
 
   return (
     <Container>
       <Content>
         <Form>
           <Item picker>
+            <Label>Where?</Label>
             <Picker
               mode="dropdown"
               renderHeader={backAction =>
@@ -59,31 +66,46 @@ const VisitView = ({
               }
               iosIcon={<Icon name="arrow-down" />}
               placeholder="Select Practice (Location)"
-              placeholderStyle={{ color: "#bfc6ea" }}
+              placeholderStyle={{ color: '#666', fontWeight: 'normal', paddingLeft: -2 }}
               placeholderIconColor="#007aff"
               selectedValue={visitDraft.practiceId}
               onValueChange={() => {}}
             >
-              { targetUser.practices.map(p => <Picker.Item key={p.id} label={p.name} value={p.id} />) }
+              { targetUser.practices.map(p => <Picker.Item key={p.id} label={`${p.name} (${p.location})`} value={p.id} />) }
             </Picker>
           </Item>
           <Item>
-            <DatePicker
-              defaultDate={new Date()}
-              minimumDate={new Date(2018, 1, 1)}
-              maximumDate={new Date(2018, 12, 31)}
-              locale={"en"}
-              timeZoneOffsetInMinutes={undefined}
-              modalTransparent={false}
-              animationType={"fade"}
-              androidMode={"default"}
-              placeHolderText="Select date"
-              textStyle={{ color: "green" }}
-              placeHolderTextStyle={{ color: "#d3d3d3" }}
-              onDateChange={this.setDate}
-              disabled={false}
+            <Label>Day?</Label>
+            <View style={{ flex: 1 }}>
+              <DatePickerIOS
+                date={new Date()}
+                mode={'date'}
+              />
+            </View>
+          </Item>
+          <Spacer size={10} />
+          <Item>
+            <Label>4:30PM?</Label>
+            <Switch
+              style={{ marginBottom: 15 }}
+              value={visitDraft.favTime}
+              onValueChange={setFavTime.bind(null, !visitDraft.favTime)}
             />
           </Item>
+          <Spacer size={15} />
+          {
+            !visitDraft.favTime &&
+              <Item style={{ paddingTop: 15 }}>
+                <Label>Time?</Label>
+                <View style={{ flex: 1 }}>
+                  <DatePickerIOS
+                    date={new Date()}
+                    minuteInterval={'15'}
+                    mode={'time'}
+                  />
+                </View>
+              </Item>
+          }
         </Form>
       </Content>
       <Footer>
@@ -107,11 +129,12 @@ VisitView.defaultProps = {
 
 const mapStateToProps = state => ({
   visitDraft: state.visitDraft,
-  users: getUsers(state)
+  users: getUsers(state),
+  favTime: state.visitDraft.favTime
 })
 
 const mapDispatchToProps = {
-
+  setFavTime
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(VisitView);

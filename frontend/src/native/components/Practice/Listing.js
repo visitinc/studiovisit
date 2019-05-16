@@ -1,5 +1,6 @@
 import React, { PropTypes, Fragment } from 'react';
 import { View  } from 'react-native';
+import { connect } from 'react-redux';
 import { ListItem, Text, Icon, Left, Right, Thumbnail, Body, Badge } from 'native-base';
 import Colors from '../../../../native-base-theme/variables/commonColor';
 import { formatPracticeMetadata } from '../../../lib'
@@ -46,4 +47,12 @@ const Practice = ({ practice, practice: { name, present, members = [], images = 
 Practice.propTypes = {
 };
 
-export default Practice;
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Practice);

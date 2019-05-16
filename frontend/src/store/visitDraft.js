@@ -1,5 +1,6 @@
 export default {
   visitDraft: {
-    practiceId: undefined
+    practiceId: undefined,
+    favTime: true
   }
 };
