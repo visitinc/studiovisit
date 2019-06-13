@@ -5,7 +5,7 @@ export const DEV = devMode
 // Google Analytics - uses a 'dev' account while we're testing
 export const GA_TRACKING_ID = (devMode) ? 'UA-84284256-2' : 'UA-84284256-1'
 export const APP_COLOR = '#2929fa'
-export const SERVICE_ROOT = 'http://localhost:8000' // 'https://studiovisit-prototype.appspot.com'
+export const SERVICE_ROOT = 'https://studiovisit-prototype.appspot.com'
 export const API_ROOT = SERVICE_ROOT + '/api'
 export const OAUTH_ROOT = SERVICE_ROOT + '/o'
 // the client id / client secret identify the oauth 2 client "application"

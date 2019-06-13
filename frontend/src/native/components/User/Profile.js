@@ -18,18 +18,11 @@ const Profile = ({ member, logout }) => (
             <View>
               <Content padder>
                 <Header
-                  title={`Hi ${member.username},`}
-                  content={"Today's art world weather is: Heavy Criticism "}
+                  title={`Hello, ${member.username}`}
+                  content="Welcome to work."
                 />
               </Content>
-              <Content>
-                <Left />
-                  <CairoIcon name="evil-eye" style={{ color: APP_COLOR, fontSize: 42, alignSelf: 'center'}} />
-                <Right />
-              </Content>
-              <Spacer size={10} />
-
-              <ListItem onPress={Actions.updateProfile} icon>
+              <ListItem icon>
                 <Left>
                   <CairoIcon name="pencil" style={{ color: 'black', fontSize: 42 }} />
                 </Left>
